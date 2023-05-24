@@ -2,14 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lista de hospitales</title>
+    <title>Lista de estudiantes</title>
     <div th:insert="~{fragments/general.html :: estilo}"></div>
 </head>
 <body>
 <div class="container">
     <div th:insert="~{fragments/general.html :: header}"></div>
     <h1>Lista de estudiantes</h1>
-    <a href="#">Nuevo Estudiante</a>
+    <a class="btn btn-primary" th:href="@{/estudiante/nuevo}">Nuevo estudiante</a>
+    <div th:if="${msg != null}" th:text="${msg}" class="alert alert-success" role="alert"></div>
     <table class="table">
         <thead>
         <tr>
@@ -28,7 +29,7 @@
             <td th:text="${estudiante.apellidos}">Mark</td>
             <td th:text="${estudiante.dni}">Mark</td>
             <td th:text="${estudiante.edad}">Mark</td>
-            <td><a href="#">Editar</a></td>
+            <td><a class="btn btn-secondary"  th:href="@{'/estudiante/edit' + '?id=' + ${estudiante.id}}">Editar estudiante</a>
         </tr>
         </tbody>
     </table>

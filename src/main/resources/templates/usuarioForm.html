@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Estudiante</title>
+  <div th:insert="~{fragments/general.html :: estilo}"></div>
+</head>
+<body class="container">
+<div class="container">
+  <div th:insert="~{fragments/general.html :: header}"></div>
+  <form method="post" th:action="@{/estudiante/guardar}" th:object="${usuario}">
+    <div class="mb-3">
+      <input th:field="*{id}" type="hidden" class="form-control" >
+    </div>
+    <div class="mb-3">
+      <label for="nombres">Nombres</label>
+      <input th:field="*{nombres}" type="text" class="form-control" th:classappend="${#fields.hasErrors('nombres')?'is-invalid':''}">
+      <div class="invalid-feedback" th:if="${#fields.hasErrors('nombres')}" th:errors="*{nombres}"></div>
+    </div>
+
+    <div class="mb-3">
+      <label for="apellidos">Apellidos</label>
+      <input type="text" class="form-control" th:field="*{apellidos}" th:classappend="${#fields.hasErrors('apellidos')?'is-invalid':''}">
+      <div class="invalid-feedback" th:if="${#fields.hasErrors('apellidos')}" th:errors="*{apellidos}"></div>
+    </div>
+    <div class="mb-3">
+      <label for="dni">DNI</label>
+      <input type="text" class="form-control" th:field="*{dni}" th:classappend="${#fields.hasErrors('dni')?'is-invalid':''}">
+      <div class="invalid-feedback" th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}"></div>
+    </div>
+    <div class="mb-3">
+      <label for="edad">Edad</label>
+      <input  type="text" class="form-control" th:field="*{edad}" th:classappend="${#fields.hasErrors('edad')?'is-invalid':''}">
+      <div class="invalid-feedback" th:if="${#fields.hasErrors('edad')}" th:errors="*{edad}"></div>
+    </div>
+    <div class="mb-3">
+      <label for="correo">Correo</label>
+      <input  type="email" class="form-control" th:field="*{correo}">
+    </div>
+    <div class="mb-3">
+      <label for="password">Password</label>
+      <input  type="password" class="form-control" th:field="*{password}">
+    </div>
+    <a th:href="@{/estudiante/lista}" class="btn btn-danger">Cancelar</a>
+    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+  </form>
+</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+        crossorigin="anonymous"></script>
+</html>
